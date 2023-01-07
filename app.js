@@ -28,8 +28,8 @@ app.get('/api/movies/:id', movieHandlers.getMovieById);
 app.get('/api/users', usersHandlers.getUsers);
 app.get('/api/users/:id', usersHandlers.getUsersById);
 
-app.post('/api/movies', validateMovie, movieHandlers.postMovie);
 app.post('/api/users', hashPassword, usersHandlers.postUser);
+app.post('/api/movies', validateMovie, movieHandlers.postMovie);
 
 app.put('/api/users/:id', validateUser, usersHandlers.updateUsers);
 app.put('/api/movies/:id', validateMovie, movieHandlers.updateMovie);
