@@ -16,7 +16,12 @@ const usersHandlers = require('./usersHandlers');
 const { validateMovie } = require('./validators.js');
 const { validateUser } = require('./validators.js');
 const { hashPassword } = require('./auth.js');
+const { step1 } = require('./test_requete.js');
+const { step2 } = require('./test_requete.js');
+const { lastStep } = require('./test_requete.js');
 
+app.get('/api/movies', movieHandlers.getMovies);
+app.get('/api/movies', movieHandlers.getMovies);
 app.get('/api/movies', movieHandlers.getMovies);
 app.get('/api/movies/:id', movieHandlers.getMovieById);
 app.get('/api/users', usersHandlers.getUsers);
@@ -38,3 +43,7 @@ app.listen(port, (err) => {
     console.log(`Server is listening on ${port}`);
   }
 });
+
+/*******************************TEST REQUETE SUR ROUTE (Express 7) ****************************/
+
+app.get('/justToTest', step1, step2, lastStep);

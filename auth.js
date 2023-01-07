@@ -23,6 +23,27 @@ const hashPassword = (req, res, next) => {
     });
 };
 
+/*******************************TEST REQUETE SUR ROUTE (Express 7) ****************************/
+
+// const step1 = (req, res, next) => {
+//   req.message = 'Je suis à l etape 1';
+//   next();
+// };
+
+// const step2 = (req, res, next) => {
+//   req.message += ' et maintenant, je suis à l étape 2';
+//   next();
+// };
+
+// const lastStep = (req, res) => {
+//   res.send(req.message);
+// };
+
+// Ici step1, step2 et lastStep sont des middlewares, et seront exécutés l'un après l'autre au déclenchement de la route.*/
+
 module.exports = {
   hashPassword,
+  // step1,
+  // step2,
+  // lastStep,
 };
