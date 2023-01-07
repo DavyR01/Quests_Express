@@ -63,12 +63,12 @@ const postUser = (req, res) => {
 
 const updateUsers = (req, res) => {
   const { firstname, lastname, email, city, language, hashedPassword } =
-    req.body;
-  console.log(req.body);
+    req.params.id;
+  console.log(req.params.id);
 
   database
     .query(
-      'UPDATE users SET firstname = ?, lastname = ?, email = ?, city = ?, language = ?, hashedPassword = ?',
+      `UPDATE users SET firstname = ?, lastname = ?, email = ?, city = ?, language = ?, hashedPassword = ? WHERE id = ${result.insertId}`,
       [firstname, lastname, email, city, language, hashedPassword]
     )
     .then(([result]) => {
@@ -76,9 +76,11 @@ const updateUsers = (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send('Error saving the user');
+      res.status(500).send('Error saving the user dans cet update');
     });
 };
+
+// UPDATE users SET lastname = "random" WHERE id = 31;
 
 const deleteUser = (req, res) => {
   const id = parseInt(req.params.id);
