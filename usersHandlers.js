@@ -68,7 +68,7 @@ const updateUsers = (req, res) => {
 
   database
     .query(
-      `UPDATE users SET firstname = ?, lastname = ?, email = ?, city = ?, language = ?, hashedPassword = ? WHERE id = ${result.insertId}`,
+      `UPDATE users SET firstname = ?, lastname = ?, email = ?, city = ?, language = ?, hashedPassword = ? WHERE id = ?`,
       [firstname, lastname, email, city, language, hashedPassword]
     )
     .then(([result]) => {
