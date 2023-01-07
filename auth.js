@@ -13,7 +13,6 @@ const hashPassword = (req, res, next) => {
     .then((hashedPassword) => {
       console.log(hashedPassword);
       req.body.hashedPassword = hashedPassword;
-      delete req.body.password;
 
       next();
     })

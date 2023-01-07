@@ -16,9 +16,10 @@ const usersHandlers = require('./usersHandlers');
 const { validateMovie } = require('./validators.js');
 const { validateUser } = require('./validators.js');
 const { hashPassword } = require('./auth.js');
-const { step1 } = require('./test_requete.js');
-const { step2 } = require('./test_requete.js');
-const { lastStep } = require('./test_requete.js');
+const test = require('./test_requete.js');
+// const { step1 } = require('./test_requete.js');
+// const { step2 } = require('./test_requete.js');
+// const { lastStep } = require('./test_requete.js');
 
 app.get('/api/movies', movieHandlers.getMovies);
 app.get('/api/movies', movieHandlers.getMovies);
@@ -46,4 +47,5 @@ app.listen(port, (err) => {
 
 /*******************************TEST REQUETE SUR ROUTE (Express 7) ****************************/
 
-app.get('/justToTest', step1, step2, lastStep);
+app.get('/justToTest', test.step1, test.step2, test.lastStep);
+// app.get('/justToTest', step1, step2, lastStep);
