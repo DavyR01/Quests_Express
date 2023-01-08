@@ -82,8 +82,8 @@ const postMovie = (req, res) => {
       [title, director, year, color, duration]
     )
     .then(([result]) => {
+      console.log(result);
       res.location(`/api/movies/${result.insertId}`).sendStatus(201);
-      it;
     })
     .catch((err) => {
       console.error(err);
@@ -94,6 +94,7 @@ const postMovie = (req, res) => {
 const updateMovie = (req, res) => {
   const id = parseInt(req.params.id);
   const { title, director, year, color, duration } = req.body;
+  // console.log(req);
   console.log(req.params.id);
   console.log(req.params);
   console.log(req.body);
@@ -104,6 +105,7 @@ const updateMovie = (req, res) => {
       [title, director, year, color, duration, id]
     )
     .then(([result]) => {
+      console.log(result);
       if (result.affectedRows === 0) {
         res.status(404).send('Not Found');
       } else {

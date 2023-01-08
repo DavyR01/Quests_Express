@@ -5,7 +5,7 @@ const port = process.env.APP_PORT ?? 5000;
 
 app.use(express.json());
 
-// *********************Déclaration variables : ***********************
+// ********************* Déclaration variables : ***********************
 
 const welcome = (req, res) => {
   res.send('Welcome to my quest_express');
@@ -21,7 +21,7 @@ const test = require('./test_requete.js');
 // const { lastStep } = require('./test_requete.js');
 const { isItDwight } = require('./auth.js');
 
-// ****************The public routes**************************
+// *********************** The public routes *****************************
 
 /***TEST REQUETE SUR ROUTE (Express 7) ***/
 
@@ -48,8 +48,9 @@ app.post(
 
 // ******************** The routes to protect : mur d'authentification, chaque route ci-dessous va nécessiter un jeton (à insérer dans Authorization dans POSTMAN) pour fonctionner, être activé *****************************
 
-app.use(verifyToken); // authentication wall : verifyToken is activated for each route after this line
+// app.use(verifyToken); // authentication wall : verifyToken is activated for each route after this line
 
+// Les validations peuvent et doivent être faites pour les requêtes POST et PUT.
 app.post('/api/movies', validateMovie, movieHandlers.postMovie);
 app.put('/api/movies/:id', validateMovie, movieHandlers.updateMovie);
 app.delete('/api/movies/:id', movieHandlers.deleteMovie);
