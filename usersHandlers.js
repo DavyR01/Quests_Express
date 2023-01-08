@@ -67,6 +67,11 @@ const updateUsers = (req, res) => {
     req.body;
   console.log(req.params.id);
 
+  if (id != req.payload.sub) {
+    res.status(403).send('Forbidden');
+    // res.send met fin à une fonction tout comme le return
+  }
+
   database
     .query(
       'UPDATE users SET firstname = ?, lastname = ?, email = ?, city = ?, language = ?, hashedPassword = ? WHERE id = ?',
@@ -89,6 +94,10 @@ const updateUsers = (req, res) => {
 
 const deleteUser = (req, res) => {
   const id = parseInt(req.params.id);
+  if (id != req.payload.sub) {
+    res.status(403).send('Forbidden');
+    // res.send met fin à une fonction tout comme le return
+  }
 
   database
     .query('delete from users where id = ?', [id])

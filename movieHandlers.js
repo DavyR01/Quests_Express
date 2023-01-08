@@ -74,6 +74,7 @@ const getMovieById = (req, res) => {
 
 const postMovie = (req, res) => {
   const { title, director, year, color, duration } = req.body;
+  console.log(req.body);
 
   database
     .query(
@@ -93,6 +94,10 @@ const postMovie = (req, res) => {
 const updateMovie = (req, res) => {
   const id = parseInt(req.params.id);
   const { title, director, year, color, duration } = req.body;
+  console.log(req.params.id);
+  console.log(req.params);
+  console.log(req.body);
+
   database
     .query(
       'update movies set title = ?, director = ?, year = ?, color = ?, duration = ? where id = ?',

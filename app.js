@@ -5,10 +5,10 @@ const port = process.env.APP_PORT ?? 5000;
 
 app.use(express.json());
 
-// *********************Déclaration variables :***********************
+// *********************Déclaration variables : ***********************
 
 const welcome = (req, res) => {
-  res.send('Welcome to hell');
+  res.send('Welcome to my quest_express');
 };
 const movieHandlers = require('./movieHandlers');
 const usersHandlers = require('./usersHandlers');
@@ -36,7 +36,7 @@ app.get('/api/movies/:id', movieHandlers.getMovieById);
 app.get('/api/users', usersHandlers.getUsers);
 app.get('/api/users/:id', usersHandlers.getUsersById);
 
-// Pour s'enregistrer : génère un mot de passe haché à partir d'un mot de passe que l'on définit
+// Pour s'enregistrer, s'inscrire : génère un mot de passe haché à partir d'un mot de passe que l'on définit
 app.post('/api/users', hashPassword, usersHandlers.postUser);
 app.post('/api/logintest', isItDwight);
 // Pour se connecter et générer un token
@@ -46,7 +46,7 @@ app.post(
   verifyPassword
 );
 
-// ******************** The routes to protect : mur d'authentification, chaque route ci-dessous va nécessiter un jeton pour fonctionner, être activé *****************************
+// ******************** The routes to protect : mur d'authentification, chaque route ci-dessous va nécessiter un jeton (à insérer dans Authorization dans POSTMAN) pour fonctionner, être activé *****************************
 
 app.use(verifyToken); // authentication wall : verifyToken is activated for each route after this line
 
