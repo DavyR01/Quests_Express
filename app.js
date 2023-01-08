@@ -36,8 +36,10 @@ app.get('/api/movies/:id', movieHandlers.getMovieById);
 app.get('/api/users', usersHandlers.getUsers);
 app.get('/api/users/:id', usersHandlers.getUsersById);
 
+// Pour s'enregistrer : génère un mot de passe haché à partir d'un mot de passe que l'on définit
 app.post('/api/users', hashPassword, usersHandlers.postUser);
 app.post('/api/logintest', isItDwight);
+// Pour se connecter et générer un token
 app.post(
   '/api/login',
   usersHandlers.getUserByEmailWithPasswordAndPassToNext,

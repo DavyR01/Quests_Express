@@ -8,6 +8,8 @@ const hashingOptions = {
   parallelism: 1,
 };
 
+// Hasher le password
+
 const hashPassword = (req, res, next) => {
   argon2
     .hash(req.body.password, hashingOptions)
