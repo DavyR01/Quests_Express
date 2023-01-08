@@ -34,7 +34,7 @@ const isItDwight = (req, res) => {
   }
 };
 
-// Générer un token (Header, Payload, Signature)
+// Générer un token / jeton (Header, Payload, Signature)
 
 const verifyPassword = (req, res) => {
   argon2
@@ -59,7 +59,7 @@ const verifyPassword = (req, res) => {
     });
 };
 
-// Pour protéger sa route avec authentification => Pour cela, rentrer son token dans authorization de POSTMAN
+// Pour protéger sa route avec authentification, l'utilisateur aura donc accès à cette route uniquement si il est authentifié => Pour cela, rentrer son token dans authorization de POSTMAN
 
 const verifyToken = (req, res, next) => {
   try {
