@@ -18,7 +18,7 @@ const test = require('./test_requete.js');
 // const { step1 } = require('./test_requete.js');
 // const { step2 } = require('./test_requete.js');
 // const { lastStep } = require('./test_requete.js');
-// const { isItDwight } = require('./auth.js');
+const { isItDwight } = require('./auth.js');
 
 app.get('/', welcome);
 app.get('/api/movies', movieHandlers.getMovies);
@@ -30,7 +30,7 @@ app.get('/api/users/:id', usersHandlers.getUsersById);
 
 app.post('/api/users', hashPassword, usersHandlers.postUser);
 app.post('/api/movies', validateMovie, movieHandlers.postMovie);
-// app.post('/api/login', isItDwight);
+app.post('/api/logintest', isItDwight);
 app.post(
   '/api/login',
   usersHandlers.getUserByEmailWithPasswordAndPassToNext,

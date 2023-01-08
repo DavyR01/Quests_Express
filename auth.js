@@ -27,14 +27,26 @@ const isItDwight = (req, res) => {
     req.body.email === 'dwight@theoffice.com' &&
     req.body.password === '123456'
   ) {
-    res.send('Credentials are valid');
+    res.send('Credentials are valid for Dwight');
   } else {
     res.sendStatus(401);
   }
 };
 
 const verifyPassword = (req, res) => {
-  req.send(req.user);
+  argon2
+    .verify(req.user.hashedPassword, req.body.password)
+    .then((isVerified) => {
+      if (isVerified) {
+        res.send('Credentials are valid');
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
 };
 
 /*******************************TEST REQUETE SUR ROUTE (Express 7) ****************************/
