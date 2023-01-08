@@ -68,7 +68,9 @@ const updateUsers = (req, res) => {
   console.log(req.params.id);
 
   if (id != req.payload.sub) {
-    res.status(403).send('Forbidden');
+    res
+      .status(403)
+      .send('Forbidden, l id ne correspond pas à celui du payload');
     // res.send met fin à une fonction tout comme le return
   }
 
@@ -95,7 +97,9 @@ const updateUsers = (req, res) => {
 const deleteUser = (req, res) => {
   const id = parseInt(req.params.id);
   if (id != req.payload.sub) {
-    res.status(403).send('Forbidden');
+    res
+      .status(403)
+      .send('Forbidden, l id ne correspond pas à celui du payload');
     // res.send met fin à une fonction tout comme le return
   }
 

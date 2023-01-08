@@ -48,6 +48,8 @@ const verifyPassword = (req, res) => {
         const token = jwt.sign(payload, process.env.JWT_SECRET, {
           expiresIn: '1h',
         });
+        console.log(`it's my hashedPassword : ${req.user.hashedPassword}`);
+        console.log(`it's my token : ${token}`);
 
         delete req.user.hashedPassword;
         res.send({ token, user: req.user });
