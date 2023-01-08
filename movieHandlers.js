@@ -86,7 +86,7 @@ const postMovie = (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send('Error saving the movie');
+      res.status(500).send('Erreur de sauvegarde du film');
     });
 };
 

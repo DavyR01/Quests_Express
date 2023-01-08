@@ -13,7 +13,7 @@ const movieHandlers = require('./movieHandlers');
 const usersHandlers = require('./usersHandlers');
 const { validateMovie } = require('./validators.js');
 const { validateUser } = require('./validators.js');
-const { hashPassword, verifyPassword } = require('./auth.js');
+const { hashPassword, verifyPassword, verifyToken } = require('./auth.js');
 const test = require('./test_requete.js');
 // const { step1 } = require('./test_requete.js');
 // const { step2 } = require('./test_requete.js');
@@ -29,7 +29,7 @@ app.get('/api/users', usersHandlers.getUsers);
 app.get('/api/users/:id', usersHandlers.getUsersById);
 
 app.post('/api/users', hashPassword, usersHandlers.postUser);
-app.post('/api/movies', validateMovie, movieHandlers.postMovie);
+app.post('/api/movies', validateMovie, verifyToken, movieHandlers.postMovie);
 app.post('/api/logintest', isItDwight);
 app.post(
   '/api/login',
