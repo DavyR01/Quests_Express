@@ -65,9 +65,10 @@ const updateUsers = (req, res) => {
   const id = parseInt(req.params.id);
   const { firstname, lastname, email, city, language, hashedPassword } =
     req.body;
+  console.log(req.payload);
   console.log(req.params.id);
 
-  if (id != req.payload.sub) {
+  if (id !== req.payload.sub) {
     res
       .status(403)
       .send('Forbidden, l id ne correspond pas à celui du payload');
@@ -96,7 +97,7 @@ const updateUsers = (req, res) => {
 
 const deleteUser = (req, res) => {
   const id = parseInt(req.params.id);
-  if (id != req.payload.sub) {
+  if (id !== req.payload.sub) {
     res
       .status(403)
       .send('Forbidden, l id ne correspond pas à celui du payload');
