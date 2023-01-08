@@ -22,6 +22,21 @@ const hashPassword = (req, res, next) => {
     });
 };
 
+const isItDwight = (req, res) => {
+  if (
+    req.body.email === 'dwight@theoffice.com' &&
+    req.body.password === '123456'
+  ) {
+    res.send('Credentials are valid');
+  } else {
+    res.sendStatus(401);
+  }
+};
+
+const verifyPassword = (req, res) => {
+  req.send(req.user);
+};
+
 /*******************************TEST REQUETE SUR ROUTE (Express 7) ****************************/
 
 // const step1 = (req, res, next) => {
@@ -45,4 +60,6 @@ module.exports = {
   // step1,
   // step2,
   // lastStep,
+  isItDwight,
+  verifyPassword,
 };
